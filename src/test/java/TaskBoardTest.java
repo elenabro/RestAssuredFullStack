@@ -1,15 +1,14 @@
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskBoardTest {
 
     private static int taskId;
@@ -71,7 +70,7 @@ public class TaskBoardTest {
         String updatedTask = "{ \"id\": "+taskId+", " +
                 "\"taskName\": \"Art020525-updated\", " +
                 "\"description\": \"string\", " +
-                "\"dueDate\": \"2025-02-06T02:24:03.054Z\", " +
+                "\"dueDate\": \"2025-02-08T02:24:03.054Z\", " +
                 "\"priority\": 0, " +
                 "\"status\": \"string\", " +
                 "\"author\": \"string\" " +
@@ -97,5 +96,4 @@ public class TaskBoardTest {
                 .log().all()
                 .statusCode(204);
     }
-
 }
